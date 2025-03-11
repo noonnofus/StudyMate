@@ -1,0 +1,75 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Welcome!";
+}
+
+    <style>
+      .hero-section {
+        background: url("https://i.pinimg.com/736x/67/fc/1e/67fc1ef68c03be21e5efa51c93d7e664.jpg")
+          center/cover no-repeat;
+        height: 100vh;
+        position: relative;
+      }
+
+      .hero-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 139, 0.5);
+      }
+
+      .hero-section .container {
+        position: relative;
+        z-index: 1;
+      }
+    </style>
+
+    <header
+      class="hero-section d-flex align-items-center justify-content-center text-white vh-100"
+    >
+      <div class="container text-center">
+        <h1 class="display-4">Studying alone?</h1>
+        <p class="lead">Build your skill with StudyMate</p>
+        <a href="#features" class="btn btn-light btn-lg">See more</a>
+      </div>
+    </header>
+    <section id="features" class="py-5">
+      <div class="container text-center">
+        <h2 class="mb-4">Features of StudyMate</h2>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="p-3 h-100 border rounded bg-light">
+              <h4>Easy Use</h4>
+              <p>
+                Easy use of the app, no need to spend time for learning how to
+                use the app!
+              </p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="p-3 h-100 border rounded bg-light">
+              <h4>More than 100 students</h4>
+              <p>
+                More than 100 students are currently using and there are 100
+                different type of study rooms!
+              </p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="p-3 h-100 border rounded bg-light">
+              <h4>FREE</h4>
+              <p>Free to use for anyone. Your credit card is not required!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="contact" class="bg-secondary text-white text-center py-5">
+      <div class="container">
+        <h2>Join the classroom!</h2>
+        <a href="/Login/Login" class="btn btn-light btn-lg">Join!</a>
+      </div>
+    </section>

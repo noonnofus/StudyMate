@@ -1,0 +1,30 @@
+@model ASPDotNetProject.Models.LoginViewModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Login";
+}
+
+<h2>Login</h2>
+
+<div class="border rounded p-4">
+    <form asp-controller="Login" asp-action="Login" method="post">
+        @if (!ViewData.ModelState.IsValid)
+        {
+            <div class="alert alert-danger">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            </div>
+        }
+        <div class="mb-3">
+            <label asp-for="username" class="form-label"></label>
+            <input asp-for="username" class="form-control" required/>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="password" class="form-label"></label>
+            <input asp-for="password" type="password" class="form-control" required/>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Login</button>
+    </form>
+</div>

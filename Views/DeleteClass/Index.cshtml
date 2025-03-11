@@ -1,0 +1,29 @@
+@model ASPDotNetProject.Models.ViewModel.ClassroomViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Before Delete!";
+}
+
+<div class="mt-5">
+    <div class="modal d-block position-static pt-2">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="text-danger">Warning</h5>
+                </div>
+                <div class="modal-body py-5">
+                    <p class="fw-bold">
+                        Do you really want to <mark>DELETE</mark> the classroom? You cannot undo this action.
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <a asp-controller="Profile" asp-action="Index" class="btn btn-secondary">Cancel</a>
+                    <form asp-controller="DeleteClass" asp-action="DeleteClass" method="post">
+                        <input type="hidden" name="id" value="@Model.Classroom.Id" />
+                        <button type="submit" class="btn btn-danger">DELETE</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
