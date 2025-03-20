@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/hyunhokim/Desktop/ASPDotNetProject/ASPDotNetProject/ASPDotNetProject.csproj": {}
+    "/Users/hyunhokim/Desktop/ASP.NET/ASPDotNetProject/StudyMate/ASPDotNetProject.csproj": {}
   },
   "projects": {
-    "/Users/hyunhokim/Desktop/ASPDotNetProject/ASPDotNetProject/ASPDotNetProject.csproj": {
+    "/Users/hyunhokim/Desktop/ASP.NET/ASPDotNetProject/StudyMate/ASPDotNetProject.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/hyunhokim/Desktop/ASPDotNetProject/ASPDotNetProject/ASPDotNetProject.csproj",
+        "projectUniqueName": "/Users/hyunhokim/Desktop/ASP.NET/ASPDotNetProject/StudyMate/ASPDotNetProject.csproj",
         "projectName": "ASPDotNetProject",
-        "projectPath": "/Users/hyunhokim/Desktop/ASPDotNetProject/ASPDotNetProject/ASPDotNetProject.csproj",
+        "projectPath": "/Users/hyunhokim/Desktop/ASP.NET/ASPDotNetProject/StudyMate/ASPDotNetProject.csproj",
         "packagesPath": "/Users/hyunhokim/.nuget/packages/",
-        "outputPath": "/Users/hyunhokim/Desktop/ASPDotNetProject/ASPDotNetProject/obj/",
+        "outputPath": "/Users/hyunhokim/Desktop/ASP.NET/ASPDotNetProject/StudyMate/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/hyunhokim/.nuget/NuGet/NuGet.Config"

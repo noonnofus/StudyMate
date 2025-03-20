@@ -17,59 +17,59 @@ build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = ASPDotNetProject
 build_property.RootNamespace = ASPDotNetProject
-build_property.ProjectDir = /Users/hyunhokim/Desktop/ASPDotNetProject/ASPDotNetProject/
+build_property.ProjectDir = /Users/hyunhokim/Desktop/ASP.NET/ASPDotNetProject/StudyMate/
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = /Users/hyunhokim/Desktop/ASPDotNetProject/ASPDotNetProject
+build_property.MSBuildProjectDirectory = /Users/hyunhokim/Desktop/ASP.NET/ASPDotNetProject/StudyMate
 build_property._RazorSourceGeneratorDebug = 
 
-[/Users/hyunhokim/Desktop/ASPDotNetProject/ASPDotNetProject/Views/Classroom/Index.cshtml]
+[/Users/hyunhokim/Desktop/ASP.NET/ASPDotNetProject/StudyMate/Views/Classroom/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ2xhc3Nyb29tL0luZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/hyunhokim/Desktop/ASPDotNetProject/ASPDotNetProject/Views/ClassroomDetail/Index.cshtml]
+[/Users/hyunhokim/Desktop/ASP.NET/ASPDotNetProject/StudyMate/Views/ClassroomDetail/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ2xhc3Nyb29tRGV0YWlsL0luZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/hyunhokim/Desktop/ASPDotNetProject/ASPDotNetProject/Views/Create/Index.cshtml]
+[/Users/hyunhokim/Desktop/ASP.NET/ASPDotNetProject/StudyMate/Views/Create/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ3JlYXRlL0luZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/hyunhokim/Desktop/ASPDotNetProject/ASPDotNetProject/Views/DeleteClass/Index.cshtml]
+[/Users/hyunhokim/Desktop/ASP.NET/ASPDotNetProject/StudyMate/Views/DeleteClass/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRGVsZXRlQ2xhc3MvSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/hyunhokim/Desktop/ASPDotNetProject/ASPDotNetProject/Views/Home/Index.cshtml]
+[/Users/hyunhokim/Desktop/ASP.NET/ASPDotNetProject/StudyMate/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9JbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/hyunhokim/Desktop/ASPDotNetProject/ASPDotNetProject/Views/Home/InternalError.cshtml]
+[/Users/hyunhokim/Desktop/ASP.NET/ASPDotNetProject/StudyMate/Views/Home/InternalError.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9JbnRlcm5hbEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/hyunhokim/Desktop/ASPDotNetProject/ASPDotNetProject/Views/Home/NotFound.cshtml]
+[/Users/hyunhokim/Desktop/ASP.NET/ASPDotNetProject/StudyMate/Views/Home/NotFound.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9Ob3RGb3VuZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/hyunhokim/Desktop/ASPDotNetProject/ASPDotNetProject/Views/Login/Index.cshtml]
+[/Users/hyunhokim/Desktop/ASP.NET/ASPDotNetProject/StudyMate/Views/Login/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTG9naW4vSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/hyunhokim/Desktop/ASPDotNetProject/ASPDotNetProject/Views/Profile/Index.cshtml]
+[/Users/hyunhokim/Desktop/ASP.NET/ASPDotNetProject/StudyMate/Views/Profile/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUHJvZmlsZS9JbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/hyunhokim/Desktop/ASPDotNetProject/ASPDotNetProject/Views/Shared/_Layout.cshtml]
+[/Users/hyunhokim/Desktop/ASP.NET/ASPDotNetProject/StudyMate/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/hyunhokim/Desktop/ASPDotNetProject/ASPDotNetProject/Views/Shared/_ViewStart.cshtml]
+[/Users/hyunhokim/Desktop/ASP.NET/ASPDotNetProject/StudyMate/Views/Shared/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19WaWV3U3RhcnQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/hyunhokim/Desktop/ASPDotNetProject/ASPDotNetProject/Views/_ViewImports.cshtml]
+[/Users/hyunhokim/Desktop/ASP.NET/ASPDotNetProject/StudyMate/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 

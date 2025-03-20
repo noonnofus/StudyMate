@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "OByr7HIp1E8=",
+  "dgSpecHash": "i5RHM9lJChU=",
   "success": true,
-  "projectFilePath": "/Users/hyunhokim/Desktop/ASPDotNetProject/ASPDotNetProject/ASPDotNetProject.csproj",
+  "projectFilePath": "/Users/hyunhokim/Desktop/ASP.NET/ASPDotNetProject/StudyMate/ASPDotNetProject.csproj",
   "expectedPackageFiles": [
     "/Users/hyunhokim/.nuget/packages/azure.core/1.38.0/azure.core.1.38.0.nupkg.sha512",
     "/Users/hyunhokim/.nuget/packages/azure.identity/1.11.4/azure.identity.1.11.4.nupkg.sha512",

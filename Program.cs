@@ -28,6 +28,16 @@ if (app.Environment.IsDevelopment())
 {
     Console.WriteLine("Running in Development Mode");
     app.UseDeveloperExceptionPage();
+
+    app.Use(async (context, next) =>
+    {
+        await next();
+
+        if (context.Response.StatusCode == 404)
+        {
+            throw new Exception($"404 Not Found: {context.Request.Path}");
+        }
+    });
 } 
 else 
 {
