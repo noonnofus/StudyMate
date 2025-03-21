@@ -1,4 +1,7 @@
-﻿@{
+﻿@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+
+@{
     Layout = "~/Views/Shared/_Layout.cshtml";
     ViewBag.Title = "Welcome!";
 }
@@ -70,6 +73,11 @@
     <section id="contact" class="bg-secondary text-white text-center py-5">
       <div class="container">
         <h2>Join the classroom!</h2>
-        <a href="/Login/Login" class="btn btn-light btn-lg">Join!</a>
+        @if (HttpContextAccessor.HttpContext.Session.GetString("UserId") != null) {
+        <a href="/Login/Index" class="btn btn-light btn-lg">Join!</a>
+        }
+        else {
+          <a href="/Classroom" class="btn btn-light btn-lg">Join!</a>
+        }
       </div>
     </section>

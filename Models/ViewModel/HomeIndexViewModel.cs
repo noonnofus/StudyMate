@@ -2,7 +2,7 @@
 {
     public class HomeIndexViewModel
     {
-        public Users? Users { get; set; }
+        public ApplicationUser? Users { get; set; }
         public string PageTitle { get; set; }
     }
 }

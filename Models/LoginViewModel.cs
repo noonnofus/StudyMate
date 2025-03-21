@@ -1,17 +1,16 @@
+
 using System.ComponentModel.DataAnnotations;
-using System.Collections.Generic;
 
 namespace ASPDotNetProject.Models
 {
     public class LoginViewModel
     {
-         [Key]
-        public int userId { get; set; }
+        [Required]
+        [EmailAddress]
+        public string Email { get; set; } 
 
-        [Required(ErrorMessage = "Username is requried!")]
-        public string username { get; set; }
-
-        [Required(ErrorMessage = "Password is requried!")]
-        public string password { get; set; }
+        [Required]
+        [MinLength(6, ErrorMessage = "Password must be at least 6 characters.")]
+        public string Password { get; set; }
     }
 }

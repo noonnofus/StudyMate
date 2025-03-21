@@ -9,7 +9,7 @@ namespace ASPDotNetProject.Models
     {
         public int Id { get; set; }
 
-        public int UserId { get; set; }
+        public Guid UserId { get; set; } 
 
         public int ClassroomId { get; set; }
 
@@ -17,10 +17,10 @@ namespace ASPDotNetProject.Models
         [MaxLength(1000)]
         public string Content { get; set; }
 
-        public DateTime Timestamp { get; set; }
+        public DateTime Timestamp { get; set; } = DateTime.UtcNow;
 
         [ForeignKey("UserId")]
-        public virtual Users User { get; set; }
+        public virtual ApplicationUser User { get; set; }
         
         [ForeignKey("ClassroomId")]
         public virtual Classroom Classroom { get; set; }

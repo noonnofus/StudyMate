@@ -2,10 +2,13 @@ using ASPDotNetProject.Models;
 using ASPDotNetProject.Models.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 using ASPDotNetProject.Repositories;
-using System.Linq;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+
 
 namespace ASPDotNetProject.Controllers
 {
+    [Authorize]
     public class DeleteClassController : Controller
     {
         private readonly IClassRepository _classroomService;
@@ -53,7 +56,7 @@ namespace ASPDotNetProject.Controllers
                 return View("~/Views/Home/Index.cshtml");
             }
 
-             var classroomUser = _classroomUserService.GetClassroomUser(classroom.Id, int.Parse(currentUserId));
+             var classroomUser = _classroomUserService.GetClassroomUser(classroom.Id, Guid.Parse(currentUserId));
             if (classroomUser != null)
             {
                 _classroomUserService.DeleteClassroomUser(classroomUser);

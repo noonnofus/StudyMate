@@ -2,9 +2,13 @@ using ASPDotNetProject.Models;
 using ASPDotNetProject.Models.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 using ASPDotNetProject.Repositories;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+
 
 namespace ASPDotNetProject.Controllers
 {
+    [Authorize]
     public class CreateController : Controller
     {
         private readonly IClassRepository _roomsRepository;
@@ -26,7 +30,7 @@ namespace ASPDotNetProject.Controllers
 
             ClassroomViewModel classroomViewModel = new ClassroomViewModel()
             {
-                UserId = int.Parse(userId),
+                UserId = Guid.Parse(userId),
                 Rooms = _roomsRepository.GetAllRooms(),
             };
             return View(classroomViewModel);
@@ -57,7 +61,7 @@ namespace ASPDotNetProject.Controllers
              var classroomUser = new ClassroomUser
             {
                 ClassroomId = newClassroom.Id,
-                UserId = int.Parse(userId)
+                UserId = Guid.Parse(userId)
             };
             _classroomUserService.AddClassroomUser(classroomUser);
 

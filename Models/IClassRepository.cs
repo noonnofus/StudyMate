@@ -8,8 +8,8 @@
         void UpdateRoom(Classroom updatedClassroom);
         void AddRoom(Classroom classroom);
         void DeleteRoom(int Id);
-        ClassroomUser GetClassroomUser(int userId, int classroomId);
+        ClassroomUser GetClassroomUser(Guid userId, int classroomId);
         void AddClassroomUser(ClassroomUser classroomUser);
-        IEnumerable<Classroom> GetUserClassrooms(int userId);
+        IEnumerable<Classroom> GetUserClassrooms(Guid userId);
     }
 }

@@ -1,6 +1,6 @@
 using ASPDotNetProject.Models;
 using Microsoft.EntityFrameworkCore;
-using MVCLesson5.Model;
+using ASPDotNetProject.Data;
 
 namespace ASPDotNetProject.Repositories
 {
@@ -55,7 +55,7 @@ namespace ASPDotNetProject.Repositories
             }
         }
 
-        public ClassroomUser GetClassroomUser(int userId, int classroomId)
+        public ClassroomUser GetClassroomUser(Guid userId, int classroomId)
         {
             return _context.ClassroomUser
                            .FirstOrDefault(cu => cu.UserId == userId && cu.ClassroomId == classroomId);
@@ -67,7 +67,7 @@ namespace ASPDotNetProject.Repositories
             _context.SaveChanges();
         }
 
-        public IEnumerable<Classroom> GetUserClassrooms(int userId)
+        public IEnumerable<Classroom> GetUserClassrooms(Guid userId)
         {
             return _context.Classroom
                 .Where(c => c.ClassroomUsers.Any(cu => cu.UserId == userId))

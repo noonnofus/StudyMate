@@ -2,7 +2,7 @@ using ASPDotNetProject.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
-using MVCLesson5.Model;
+using ASPDotNetProject.Data;
 
 namespace ASPDotNetProject.Repositories
 {
@@ -15,7 +15,7 @@ namespace ASPDotNetProject.Repositories
             _context = context;
         }
 
-        public ClassroomUser GetClassroomUser(int classroomId, int userId)
+        public ClassroomUser GetClassroomUser(int classroomId, Guid userId)
         {
             return _context.ClassroomUser
                            .FirstOrDefault(cu => cu.ClassroomId == classroomId && cu.UserId == userId);

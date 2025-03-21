@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using ASPDotNetProject.Models;
 using Microsoft.EntityFrameworkCore;
-using MVCLesson5.Model;
+using ASPDotNetProject.Data;
 
 namespace ASPDotNetProject.Repositories
 {

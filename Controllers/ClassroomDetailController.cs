@@ -2,24 +2,32 @@ using ASPDotNetProject.Models;
 using ASPDotNetProject.Models.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 using ASPDotNetProject.Repositories;
-using Google.Protobuf;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 
 namespace ASPDotNetProject.Controllers
 {
+    [Authorize]
     public class ClassroomDetailController : Controller
     {
         private readonly IClassRepository _roomsRepository;
-        private readonly IUsersRepository _usersRepository;
+        private readonly UserManager<ApplicationUser> _userManager;
         private readonly IClassroomUserRepository _classroomUserService;
         private readonly IMessageRepository _messageRepository;
 
-        public ClassroomDetailController(IClassRepository roomsRepository, IUsersRepository userRepository, IClassroomUserRepository classroomUserRepository, IMessageRepository messageRepository)
+        public ClassroomDetailController(
+            IClassRepository roomsRepository,
+            UserManager<ApplicationUser> userManager,
+            IClassroomUserRepository classroomUserRepository,
+            IMessageRepository messageRepository)
         {
             _roomsRepository = roomsRepository;
-            _usersRepository = userRepository;
+            _userManager = userManager;
             _classroomUserService = classroomUserRepository;
             _messageRepository = messageRepository;
         }
+
 
         public IActionResult Index(int id)
         {
@@ -38,13 +46,13 @@ namespace ASPDotNetProject.Controllers
                 return View("~/Views/Home/Index.cshtml");
             }
 
-            var isUserJoined = _classroomUserService.GetClassroomUser(id, int.Parse(currentUserId)) != null;
+            var isUserJoined = _classroomUserService.GetClassroomUser(id, Guid.Parse(currentUserId)) != null;
 
             var viewModel = new ClassroomDetailViewModel
             {
                 Classroom = classroom,
                 Messages = messages,
-                UserId = int.Parse(currentUserId),
+                UserId = Guid.Parse(currentUserId),
                 IsUserJoined = isUserJoined
             };
 
@@ -66,12 +74,12 @@ namespace ASPDotNetProject.Controllers
                 return View("~/Views/Home/Index.cshtml");
             }
 
-            if (_classroomUserService.GetClassroomUser(id, int.Parse(currentUserId)) == null)
+            if (_classroomUserService.GetClassroomUser(id, Guid.Parse(currentUserId)) == null)
             {
                 var classroomUser = new ClassroomUser
                 {
                     ClassroomId = id,
-                    UserId = int.Parse(currentUserId)
+                    UserId = Guid.Parse(currentUserId)
                 };
                 _classroomUserService.AddClassroomUser(classroomUser);
             }
@@ -87,6 +95,7 @@ namespace ASPDotNetProject.Controllers
             {
                 return NotFound("Classroom not found");
             }
+
             var currentUserId = HttpContext.Session.GetString("UserId");
 
             if (string.IsNullOrWhiteSpace(messageContent))
@@ -96,7 +105,7 @@ namespace ASPDotNetProject.Controllers
 
             var newMessage = new Messages
             {
-                UserId = int.Parse(currentUserId),
+                UserId = Guid.Parse(currentUserId),
                 ClassroomId = classroomId,
                 Content = messageContent,
                 Timestamp = DateTime.UtcNow
@@ -106,5 +115,6 @@ namespace ASPDotNetProject.Controllers
 
             return RedirectToAction("Index", new { id = classroomId });
         }
+
     }
 }

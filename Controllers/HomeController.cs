@@ -1,21 +1,23 @@
-using System.Diagnostics;
-using ASPDotNetProject.Models;
+using Microsoft.AspNetCore.Identity;
 using ASPDotNetProject.Models.ViewModel;
 using Microsoft.AspNetCore.Mvc;
+using ASPDotNetProject.Models;  // ApplicationUser 추가
 
 namespace ASPDotNetProject.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly IUsersRepository _usersRepository;
+        private readonly UserManager<ApplicationUser> _userManager;
 
-        public HomeController(IUsersRepository usersRepository)
+        public HomeController(UserManager<ApplicationUser> userManager)
         {
-            _usersRepository = usersRepository;
+            _userManager = userManager;
         }
 
         public ViewResult Index()
         {
+            var userId = HttpContext.Session.GetString("UserId");
+            Console.WriteLine($"UserId in session: {userId}");
             HomeIndexViewModel homeIndexViewModel = new HomeIndexViewModel()
             {
                 PageTitle = "",
@@ -29,7 +31,9 @@ namespace ASPDotNetProject.Controllers
             if (statusCode == 404)
             {
                 return View("NotFound");
-            } else if (statusCode == 500) {
+            }
+            else if (statusCode == 500)
+            {
                 return View("InternalError");
             }
             return View("Error");

@@ -1,12 +1,15 @@
 ﻿using ASPDotNetProject.Models;
 using ASPDotNetProject.Models.ViewModel;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ASPDotNetProject.Controllers
 {
+    [Authorize]
     public class ProfileController : Controller
     {
         private readonly IClassRepository _roomsRepository;
+
         public ProfileController(IClassRepository roomsRepository)
         {
             _roomsRepository = roomsRepository;
@@ -15,12 +18,13 @@ namespace ASPDotNetProject.Controllers
         public ViewResult Index()
         {
             var userId = HttpContext.Session.GetString("UserId");
+
             if (userId == null)
             {
                 return View("~/Views/Home/Index.cshtml");
             }
 
-            int parsedUserId = int.Parse(userId);
+            Guid parsedUserId = Guid.Parse(userId);
 
             var joinedRooms = _roomsRepository.GetUserClassrooms(parsedUserId);
 
@@ -29,8 +33,8 @@ namespace ASPDotNetProject.Controllers
                 UserId = parsedUserId,
                 Rooms = joinedRooms,
             };
+
             return View(classroomViewModel);
         }
-
     }
 }

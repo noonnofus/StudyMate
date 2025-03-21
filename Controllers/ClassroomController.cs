@@ -1,9 +1,13 @@
 ﻿using ASPDotNetProject.Models;
 using ASPDotNetProject.Models.ViewModel;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+
 
 namespace ASPDotNetProject.Controllers
 {
+    [Authorize]
     public class ClassroomController : Controller
     {
         private readonly IClassRepository _roomsRepository;
@@ -29,7 +33,7 @@ namespace ASPDotNetProject.Controllers
                 return Unauthorized("You must be logged in to create a class.");
             }
 
-            int userId = int.Parse(currentUserId);
+            Guid userId = Guid.Parse(currentUserId);
 
             var existingEntry = _roomsRepository.GetClassroomUser(userId, classroomId);
 
@@ -57,7 +61,7 @@ namespace ASPDotNetProject.Controllers
 
             ClassroomViewModel classroomViewModel = new ClassroomViewModel()
             {
-                UserId = int.Parse(currentUserId),
+                UserId = Guid.Parse(currentUserId),
                 Rooms = _roomsRepository.GetAllRooms(),
             };
             return View(classroomViewModel);
