@@ -1,0 +1,46 @@
+@model PresentationLayer.ViewModel.LoginViewModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Login";
+}
+
+<div class="border rounded p-4 d-grid gap-2 col-6 mx-auto">
+    <h2>Login</h2>
+    @if (!ViewData.ModelState.IsValid)
+    {
+        <div asp-validation-summary="All" class="alert alert-danger"></div>
+    }
+    <form asp-controller="Login" asp-action="Login" method="post">
+        <div class="mb-3">
+            <label asp-for="Email" class="form-label"></label>
+            <input asp-for="Email" class="form-control" required/>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Password" class="form-label"></label>
+            <input asp-for="Password" type="password" class="form-control" required/>
+        </div>
+        <button type="submit" class="btn btn-primary">Login</button>
+    </form>
+
+    @* <form asp-action="ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+        <div>
+            <p>@Model.ReturnUrl</p>
+            @foreach(var provider in Model.ExternalLogins) {
+                <button
+                    type="submit" class="btn border border-dark"
+                    name="provider" value="@provider.Name"
+                    title="Log in using your @provider.DisplayName account"
+                >
+                    @provider.DisplayName
+                </button>
+            }
+        </div>
+    </form> *@
+
+    <div class="text-center mt-3">
+        <small>Don't have an account?</small> 
+        <a asp-controller="Login" asp-action="Register" class="btn btn-outline-secondary ms-2">Register</a>
+    </div>
+</div>
