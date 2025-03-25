@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "+MMj2NlKeuU=",
+  "dgSpecHash": "Bbp4087+YbE=",
   "success": true,
   "projectFilePath": "/Users/hyunhokim/Desktop/ASP.NET/ASPDotNetProject/StudyMate/PresentationLayer/ASPDotNetProject.csproj",
   "expectedPackageFiles": [
@@ -27,6 +27,7 @@
     "/Users/hyunhokim/.nuget/packages/microsoft.aspnetcore.http.abstractions/2.3.0/microsoft.aspnetcore.http.abstractions.2.3.0.nupkg.sha512",
     "/Users/hyunhokim/.nuget/packages/microsoft.aspnetcore.http.extensions/2.3.0/microsoft.aspnetcore.http.extensions.2.3.0.nupkg.sha512",
     "/Users/hyunhokim/.nuget/packages/microsoft.aspnetcore.http.features/2.3.0/microsoft.aspnetcore.http.features.2.3.0.nupkg.sha512",
+    "/Users/hyunhokim/.nuget/packages/microsoft.aspnetcore.identity/2.3.1/microsoft.aspnetcore.identity.2.3.1.nupkg.sha512",
     "/Users/hyunhokim/.nuget/packages/microsoft.aspnetcore.identity.entityframeworkcore/8.0.3/microsoft.aspnetcore.identity.entityframeworkcore.8.0.3.nupkg.sha512",
     "/Users/hyunhokim/.nuget/packages/microsoft.aspnetcore.identity.ui/8.0.3/microsoft.aspnetcore.identity.ui.8.0.3.nupkg.sha512",
     "/Users/hyunhokim/.nuget/packages/microsoft.aspnetcore.webutilities/2.3.0/microsoft.aspnetcore.webutilities.2.3.0.nupkg.sha512",

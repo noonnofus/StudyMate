@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using DataAccessLayer.Models;
 using PresentationLayer.ViewModel;
 using System.Threading.Tasks;
+using System.Security.Claims;
 
 
 namespace PresentationLayer.Controllers
@@ -22,7 +23,6 @@ namespace PresentationLayer.Controllers
         public async Task<IActionResult> Index(string? ReturnUrl = null)
         {
             Console.WriteLine($"Received returnUrl: '{ReturnUrl}'");
-            // var externalLogins = ;
             LoginViewModel model = new LoginViewModel {
                 ReturnUrl = ReturnUrl,
                 ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList(),
@@ -71,11 +71,60 @@ namespace PresentationLayer.Controllers
         [HttpPost]
         public IActionResult ExternalLogin(string provider, string returnUrl)
         {
-            // Console.WriteLine(provider);
-            // Console.WriteLine(returnUrl);
-            var redirectUrl = Url.Action("ExternalLoginCallback", "Account", new { ReturnUrl = returnUrl });
+            var redirectUrl = Url.Action("ExternalLoginCallback", "Login", new { ReturnUrl = returnUrl });
+
             var properties = _signInManager.ConfigureExternalAuthenticationProperties(provider, redirectUrl);
             return new ChallengeResult(provider, properties);
+        }
+
+        public async Task<IActionResult> ExternalLoginCallback(string returnUrl = null, string remoteError = null) {
+            returnUrl = returnUrl ?? Url.Content("~/");
+            LoginViewModel loginViewModel = new LoginViewModel {
+                ReturnUrl = returnUrl,
+                ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList(),
+            };
+            if (remoteError != null) {
+                ModelState
+                    .AddModelError(string.Empty, $"Error from external provider: {remoteError}");
+                    return View("Index", loginViewModel);
+            }
+            var info = await _signInManager.GetExternalLoginInfoAsync();
+            if (info == null) {
+                ModelState
+                    .AddModelError(string.Empty, "Error loading external login information.");
+                    return View("Index", loginViewModel);
+            }
+            var signInResult = await _signInManager.ExternalLoginSignInAsync(info.LoginProvider, info.ProviderKey, isPersistent: false, bypassTwoFactor: true);
+            if (signInResult.Succeeded) {
+                var user = await _userManager.FindByLoginAsync(info.LoginProvider, info.ProviderKey);
+                var username = info.Principal.FindFirstValue(ClaimTypes.GivenName);
+
+                if (user != null)
+                {
+                    HttpContext.Session.SetString("UserId", user.Id.ToString());
+                    HttpContext.Session.SetString("Username", username);
+                }
+
+                return LocalRedirect(returnUrl);
+            } else {
+                var email = info.Principal.FindFirstValue(ClaimTypes.Email);
+                if (email != null) {
+                    var user = await _userManager.FindByEmailAsync(email);
+                    if (user == null) {
+                        user = new ApplicationUser {
+                            UserName = info.Principal.FindFirstValue(ClaimTypes.Email),
+                        };
+                        await _userManager.CreateAsync(user);
+                    }
+                    await _userManager.AddLoginAsync(user, info);
+                    await _signInManager.SignInAsync(user, isPersistent: false);
+                    return LocalRedirect(returnUrl);
+                }
+                Console.WriteLine(info.LoginProvider);
+                ViewBag.ErrorTitle = $"Email claim not received from: {info.LoginProvider}";
+                ViewBag.ErrorMessage = "Please contact support on Pragim@PragimTech.com";
+                return View("Error");
+            }
         }
 
         [HttpPost]
@@ -127,6 +176,7 @@ namespace PresentationLayer.Controllers
 
                 foreach (var error in result.Errors)
                 {
+                    Console.WriteLine(error);
                     ModelState.AddModelError("", error.Description);
                 }
             }

@@ -20,8 +20,17 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole<Guid>>()
     .AddSignInManager<SignInManager<ApplicationUser>>()
     .AddDefaultTokenProviders();
 
+builder.Services.Configure<IdentityOptions>(options =>
+{
+    options.Password.RequiredLength = 10;
+    options.Password.RequireDigit = true;
+    options.Password.RequireLowercase = true;
+    options.Password.RequireUppercase = true;
+    options.Password.RequireNonAlphanumeric = true;
+});
+
+builder.Services.AddScoped<IPasswordValidator<ApplicationUser>, CustomPasswordValidator>();
 builder.Services.AddHttpContextAccessor();
-// Register Repositories
 builder.Services.AddScoped<IClassroomUserRepository, ClassroomUserRepository>();
 builder.Services.AddScoped<IClassRepository, ClassRepository>();
 builder.Services.AddScoped<IMessageRepository, MessageRepository>();

@@ -24,9 +24,8 @@
         <button type="submit" class="btn btn-primary">Login</button>
     </form>
 
-    @* <form asp-action="ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+    <form asp-action="ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post">
         <div>
-            <p>@Model.ReturnUrl</p>
             @foreach(var provider in Model.ExternalLogins) {
                 <button
                     type="submit" class="btn border border-dark"
@@ -37,7 +36,7 @@
                 </button>
             }
         </div>
-    </form> *@
+    </form>
 
     <div class="text-center mt-3">
         <small>Don't have an account?</small> 
