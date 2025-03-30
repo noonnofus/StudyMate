@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "CQz+oEtOUr8=",
+  "dgSpecHash": "GIYL/fpSTow=",
   "success": true,
   "projectFilePath": "/Users/hyunhokim/Desktop/ASP.NET/ASPDotNetProject/StudyMate/ASPDotNetProject.csproj",
   "expectedPackageFiles": [
@@ -16,6 +16,7 @@
     "/Users/hyunhokim/.nuget/packages/microsoft.aspnetcore.authentication.abstractions/2.3.0/microsoft.aspnetcore.authentication.abstractions.2.3.0.nupkg.sha512",
     "/Users/hyunhokim/.nuget/packages/microsoft.aspnetcore.authentication.cookies/2.3.0/microsoft.aspnetcore.authentication.cookies.2.3.0.nupkg.sha512",
     "/Users/hyunhokim/.nuget/packages/microsoft.aspnetcore.authentication.core/2.3.0/microsoft.aspnetcore.authentication.core.2.3.0.nupkg.sha512",
+    "/Users/hyunhokim/.nuget/packages/microsoft.aspnetcore.authentication.google/8.0.4/microsoft.aspnetcore.authentication.google.8.0.4.nupkg.sha512",
     "/Users/hyunhokim/.nuget/packages/microsoft.aspnetcore.cryptography.internal/8.0.3/microsoft.aspnetcore.cryptography.internal.8.0.3.nupkg.sha512",
     "/Users/hyunhokim/.nuget/packages/microsoft.aspnetcore.cryptography.keyderivation/8.0.3/microsoft.aspnetcore.cryptography.keyderivation.8.0.3.nupkg.sha512",
     "/Users/hyunhokim/.nuget/packages/microsoft.aspnetcore.dataprotection/2.3.0/microsoft.aspnetcore.dataprotection.2.3.0.nupkg.sha512",

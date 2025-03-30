@@ -749,3 +749,4 @@ C:/Users/knam2/source/repos/ASPDotNetProject/ASPDotNetProject/obj/Debug/net8.0/r
 /Users/hyunhokim/Desktop/ASP.NET/ASPDotNetProject/StudyMate/obj/Debug/net8.0/ASPDotNetProject.pdb
 /Users/hyunhokim/Desktop/ASP.NET/ASPDotNetProject/StudyMate/obj/Debug/net8.0/ASPDotNetProject.genruntimeconfig.cache
 /Users/hyunhokim/Desktop/ASP.NET/ASPDotNetProject/StudyMate/obj/Debug/net8.0/ref/ASPDotNetProject.dll
+/Users/hyunhokim/Desktop/ASP.NET/ASPDotNetProject/StudyMate/bin/Debug/net8.0/Microsoft.AspNetCore.Authentication.Google.dll
