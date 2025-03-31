@@ -41,6 +41,42 @@
     .border-top {
         border-top: 1px solid #dee2e6 !important;
     }
+    .message {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 15px;
+}
+
+.message.right {
+    flex-direction: row-reverse;
+    text-align: right;
+}
+
+.message.left {
+    flex-direction: row;
+    text-align: left;
+}
+
+.message .bg-secondary {
+    background-color: #6c757d;
+}
+
+.message .text-muted {
+    font-size: 0.75rem;
+    margin-top: 5px;
+}
+
+.message .flex-shrink-1 {
+    max-width: 80%;
+}
+
+.message .bg-light {
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
 </style>
 
 <div id="navbar-container"></div>
@@ -63,23 +99,10 @@
                     {
                         <p>You have joined this class!</p>
                     }
-                </div>
+                </div> 
 
-                <!-- Chat Messages -->
-                <div class="chat-messages p-4">
-                    @foreach (var message in Model.Messages)
-                    {
-                        <div class="chat-message-@((message.UserId == Model.UserId) ? "right" : "left") pb-4">
-                            <div>
-                                <div class="bg-secondary rounded-circle mr-1" style="width: 40px; height: 40px;"></div>
-                                <div class="text-muted small text-nowrap mt-2">@message.Timestamp</div>
-                            </div>
-                            <div class="flex-shrink-1 bg-light rounded py-2 px-3 @((message.UserId ==Model.UserId) ? "mr-3" : "ml-3")">
-                                <div class="font-weight-bold mb-1"></div>
-                                @message.Content
-                            </div>
-                        </div>
-                    }
+                <div id="chatContainer">
+                    @Html.Partial("_ChatMessage", Model.Messages)
                 </div>
 
                 <!-- Chat Input -->
@@ -92,14 +115,48 @@
                 else
                 {
                     <div class="d-flex justify-content-center py-3 px-4 border-top">
-                        <form asp-action="SendMessage" asp-controller="ClassroomDetail" method="post" class="w-100 d-flex gap-2">
-                            <input type="hidden" name="classroomId" value="@Model.Classroom.Id" />
-                            <input type="text" class="form-control flex-grow-1" placeholder="Type your message" name="messageContent" required />
-                            <button class="btn btn-primary" type="submit">Send</button>
-                        </form>
+                        <input type="hidden" id="classroomId" value="@Model.Classroom.Id" />
+                        <input type="text" id="messageContent" class="form-control flex-grow-1" placeholder="Type your message" required />
+                        <button class="btn btn-primary" id="sendMessageBtn">Send</button>
                     </div>
+
                 }
             </div>
         </div>
     </div>
 </main>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        var classroomId = $("#classroomId").val();
+        loadMessages();
+
+        function loadMessages() {
+            $.get("/ClassroomDetail/GetMessages", { id: classroomId })
+                .done(function (data) {
+                    $("#chatContainer").html(data);
+                })
+                .fail(function (jqXHR, textStatus, errorThrown) {
+                    console.error("Error fetching messages: ", textStatus, errorThrown);
+                });
+        }
+
+        $("#sendMessageBtn").click(function () {
+            var messageContent = $("#messageContent").val();
+            if (messageContent.trim() === "") return;
+
+            $.post("/ClassroomDetail/SendMessage", 
+                { classroomId: classroomId, messageContent: messageContent }) 
+                .done(function () {
+                    $("#messageContent").val("");
+                    loadMessages();
+                })
+                .fail(function () {
+                    console.error('Error sending message.')
+                });
+        });
+
+        @* setInterval(loadMessages, 3000); *@
+    });
+</script>

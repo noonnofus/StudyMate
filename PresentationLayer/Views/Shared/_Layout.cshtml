@@ -19,8 +19,7 @@
           href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
 </head>
 <body>
-    
-    @* Component view: /Component/NavbarViewComponent.cs, /Views/Shared/Components/Navbar/Default.cshtml *@
+    @* view component: NavbarViewComponent *@
     @await Component.InvokeAsync("Navbar")
 
     <div class="container mt-4">
@@ -31,7 +30,6 @@
 </body>
 
 @* Partial view: _Footer.cshtml *@
-@await Html.PartialAsync("_Footer") 
+@await Html.PartialAsync("_Footer")
 
 </html>
-

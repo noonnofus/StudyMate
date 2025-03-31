@@ -32,7 +32,6 @@ namespace PresentationLayer.Controllers
         public IActionResult Index(int id)
         {
             var classroom = _roomsRepository.GetRoomById(id);
-
             if (classroom == null)
             {
                 return NotFound("Classroom not found");
@@ -41,10 +40,12 @@ namespace PresentationLayer.Controllers
             var messages = _messageRepository.GetMessagesByClassroom(id).ToList();
 
             var currentUserId = HttpContext.Session.GetString("UserId");
-
-            if (currentUserId == null) {
+            if (string.IsNullOrEmpty(currentUserId))
+            {
                 return View("~/Views/Home/Index.cshtml");
             }
+
+            ViewBag.CurrentUserId = currentUserId;
 
             var isUserJoined = _classroomUserService.GetClassroomUser(id, Guid.Parse(currentUserId)) != null;
 
@@ -58,6 +59,7 @@ namespace PresentationLayer.Controllers
 
             return View(viewModel);
         }
+
 
         public IActionResult JoinClass(int id)
         {
@@ -97,11 +99,12 @@ namespace PresentationLayer.Controllers
             }
 
             var currentUserId = HttpContext.Session.GetString("UserId");
-
             if (string.IsNullOrWhiteSpace(messageContent))
             {
                 return BadRequest("Message cannot be empty");
             }
+
+            ViewBag.CurrentUserId = currentUserId;
 
             var newMessage = new Messages
             {
@@ -113,8 +116,17 @@ namespace PresentationLayer.Controllers
 
             _messageRepository.AddMessage(newMessage);
 
-            return RedirectToAction("Index", new { id = classroomId });
+            return PartialView("_ChatMessage", new List<Messages> { newMessage });
         }
 
+        [HttpGet]
+        public IActionResult GetMessages(int id)
+        {
+            var messages = _messageRepository.GetMessagesByClassroom(id)?.ToList();
+
+            ViewBag.CurrentUserId = HttpContext.Session.GetString("UserId");
+
+            return PartialView("_ChatMessage", messages);
+        }
     }
 }
